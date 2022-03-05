@@ -1,9 +1,12 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
+.logo {
+  height: 8vmin;
+  pointer-events: none;
+}
+.cart {
+  height: 5vmin;
   pointer-events: none;
 }
 
