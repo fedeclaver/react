@@ -16,12 +16,7 @@ function ItemCount({initial, stock, onAdd}) {
   }
 
   return (
-
-
-
-    
-      <div className="container ">
-          <div className="countcontainer">
+          <div className="countcontainer m-2">
         <div className="col item">
         <button className="btn btn-info btn-sm" onClick={Sumar}>
               +
@@ -43,7 +38,7 @@ function ItemCount({initial, stock, onAdd}) {
         </div>
       </div>
      
-</div>
+
 
 
 
