@@ -1,21 +1,23 @@
 
-import ItemList from '../components/ItemList/ItemList';
+import ItemList from '../../components/ItemList/ItemList';
 import { useState, useEffect } from 'react'
-import {getFetch} from '../helpers/mock'
+import {getFetch} from '../../helpers/mock'
 import  Container  from "react-bootstrap/Container";
 function ItemListContainer({greeting} ) {
-  const [productos, setProductos] = useState([])
+  const [products, setProducts] = useState([])
+
     useEffect(() => {
         // obtengo datos del mock
         getFetch    
-        .then(response => setProductos(response))
+        .then(response => setProducts(response))
         .catch(error => console.log(error))   
+    
     }, [])
   return (
    <div>
     {greeting} ,
     <Container fluid>
-    <ItemList productos={productos} />
+    <ItemList products={products} />
     </Container></div>
   )
 }
