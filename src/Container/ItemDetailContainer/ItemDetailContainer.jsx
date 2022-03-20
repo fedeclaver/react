@@ -5,18 +5,18 @@ import ItemDetail from '../../components/ItemDetail/ItemDetail'
 
 
 function ItemDetailContainer() {
-  const [producto, setProduct] = useState([])
+  const [product, setProduct] = useState([])
     useEffect(() => {
         // obtengo datos del mock
         getFetch    
-        .then(response => setProduct(response => response.id === "1"))
+        .then(response => setProduct(response.filter( prod=> prod.id === "1")))
         .catch(error => console.log(error))  
     }, [])
    
   return (
    <div>
  
- <ItemDetail  product={producto} />
+ <ItemDetail  product={product} />
 
 
   </div>
