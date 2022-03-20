@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ItemListContainer from "./Container/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./Container/ItemDetailContainer/ItemDetailContainer";
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -14,7 +13,8 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<ItemListContainer />}></Route>
-          <Route path="/detail" element={<ItemDetailContainer />}></Route>
+          <Route path="/category/:id" element={<ItemListContainer />}></Route>
+          <Route path="/item/:id" element={<ItemDetailContainer />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
         </Routes>
       </div>
