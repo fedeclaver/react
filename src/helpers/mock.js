@@ -56,3 +56,15 @@ export const getFetch = new Promise((resolve, reject) => {
     reject("404");
   }
 });
+
+
+export const getFetchprod = new Promise((resolve, reject) => {
+  let condition = true;
+  if (condition) {
+    setTimeout(() => {
+      resolve(products[0]);
+    }, 2000);
+  } else {
+    reject("404");
+  }
+});

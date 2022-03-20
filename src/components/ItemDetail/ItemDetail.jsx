@@ -1,16 +1,15 @@
 import React from "react";
 import Count from "../ItemCount/ItemCount";
 
-function ItemDetail({ product }) {
+function ItemDetail({product}) {
   return (
     <div>
      
   
-             <img src={product[0].pictureUrl} alt='imagen' />
-            <h3>{product[0].title}</h3>
-      
-            <p>{product[0].price}</p>
-            <p>{product[0].description}</p>
+             <img src={product.pictureUrl} alt='imagen' />
+            <h3>{product.title}</h3>      
+            <p>{product.price}</p>
+            <p>{product.description}</p>
             <Count initial={0} stock={10} onAdd/>
             <button>Terminar compra</button>
           
