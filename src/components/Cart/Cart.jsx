@@ -1,19 +1,21 @@
+import { useCartContext } from "../../context/CartContext"
 
 
-import React from "react";
+function Cart() {
 
-function Cart(prod){
-    // Desarrolla la vista de un ítem donde item es de tipo
-    // { id, title, price, pictureUrl }
-return(
+  const { cartList, vaciarCarrito } = useCartContext()
 
-<>
-cart
-</>
- 
 
-)
-
+  return (
+    <div>
+      { cartList.map(product => <li key={product.id}>
+                                nombre: {product.name} precio: {product.price} 
+                                cantidad: {product.cantidad}
+                              </li>) }
+      <button onClick={vaciarCarrito}>Vaciar Carrito</button>
+    </div>
+  )
 }
+
 export default Cart
 

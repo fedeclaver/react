@@ -1,18 +1,22 @@
 import { useState } from "react";
 import './ItemCount.css';
 function ItemCount({initial, stock, onAdd}) {
-  const [cont, setcont] = useState(initial);
+  const [contador, setcont] = useState(initial);
 
   const Sumar=()=>{
-    if (cont < stock) {
-      setcont(cont + 1)
+    if (contador < stock) {
+      setcont(contador + 1)
     }
   }
   
   const Restar=()=>{    
-    if (cont > initial) {
-      setcont(cont - 1)
+    if (contador > initial) {
+      setcont(contador - 1)
     }
+  }
+
+  const agregar=()=>{
+    onAdd(contador)
   }
 
   return (
@@ -23,7 +27,7 @@ function ItemCount({initial, stock, onAdd}) {
           </button>
           </div>
           <div className="col item">
-          { cont }
+          { contador }
           </div>
           <div className="col item">
           <button className="btn btn-danger btn-sm"  onClick={Restar}>
@@ -31,7 +35,7 @@ function ItemCount({initial, stock, onAdd}) {
           </button>
           </div>
           <div className="col item">
-        <button className="btn btn-outline-primary btn-block" onClick={()=> console.log(cont)} >       
+        <button className="btn btn-outline-primary btn-block" onClick={agregar} >       
             Agregar al carrito
         </button>
 

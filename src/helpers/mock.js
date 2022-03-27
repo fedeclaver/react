@@ -44,6 +44,15 @@ let products = [
     pictureUrl: "http://placeimg.com/640/480/business",
     category: "zapatillas",
   },
+  {
+    id: "6",
+    title: "Zapatillas adidas Coreracer",
+    description:
+      "Urbanas, livianas y frescas, las Zapatillas adidas Coreracer están pensadas para cumplir con las demandas de los corredores más exigentes. Su suela tiene un estabilizador de talón y su capellada es transpirable para mantener el confort que mereces durante todo tu trayecto.",
+    price: 111,
+    pictureUrl: "http://placeimg.com/640/480/business",
+    category: "zapatillas",
+  },
 ];
 
 export const getFetch = new Promise((resolve, reject) => {
