@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import Count from "../ItemCount/ItemCount";
 
 function ItemDetail({ product }) {
-const { addToCart , cartList } =useCartContext();
+const { cartList , addToCart  } =useCartContext();
 const [ contador , setCont ] = useState(0);
 
 
