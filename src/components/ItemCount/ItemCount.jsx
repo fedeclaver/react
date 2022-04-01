@@ -1,6 +1,7 @@
 import { useState } from "react";
 import './ItemCount.css';
 function ItemCount({initial, stock, onAdd}) {
+
   const [contador, setcont] = useState(initial);
 
   const Sumar=()=>{
@@ -48,7 +49,6 @@ function ItemCount({initial, stock, onAdd}) {
 
   )
 }
-
 
 
 
