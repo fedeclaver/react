@@ -18,7 +18,7 @@ function CartContextProvider({ children }) {
       setCartList([...cartList, item]);
     }
   };
-  const vaciarCarrito = () => {
+  const deleteCarrito = () => {
     setCartList([]);
   };
   const isInCart = (id) => {
