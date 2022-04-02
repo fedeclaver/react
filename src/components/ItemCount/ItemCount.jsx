@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 import './ItemCount.css';
 function ItemCount({initial, stock, onAdd}) {
 
@@ -23,22 +24,22 @@ function ItemCount({initial, stock, onAdd}) {
   return (
           <div className="countcontainer m-2">
         <div className="col item">
-        <button className="btn btn-info btn-sm" onClick={Sumar}>
+        <Button className="btn btn-info btn-sm" onClick={Sumar}>
               +
-          </button>
+          </Button>
           </div>
           <div className="col item">
           { contador }
           </div>
           <div className="col item">
-          <button className="btn btn-danger btn-sm"  onClick={Restar}>
+          <Button className="btn btn-danger btn-sm"  onClick={Restar}>
               -
-          </button>
+          </Button>
           </div>
           <div className="col item">
-        <button className="btn btn-outline-primary btn-block" onClick={agregar} >       
+        <Button className="btn btn-outline-primary btn-block" onClick={agregar} >       
             Agregar al carrito
-        </button>
+        </Button>
 
         </div>
       </div>

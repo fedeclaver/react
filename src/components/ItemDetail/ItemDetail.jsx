@@ -1,5 +1,4 @@
-
-import { Button } from "bootstrap";
+import { Button } from "react-bootstrap";
 import { useCartContext } from "../../context/CartContext";
 
 import { Link } from "react-router-dom";
