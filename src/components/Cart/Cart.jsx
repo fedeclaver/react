@@ -1,7 +1,7 @@
 import { useCartContext } from "../../context/CartContext";
 
 function Cart() {
-  const { cartList, deleteCarrito } = useCartContext();
+  const { cartList, deleteCarrito, deleteOne,emptyCart,totalAmount,cartQuantity} = useCartContext();
 
   return (
     <div>

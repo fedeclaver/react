@@ -1,6 +1,5 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Nav from "react-bootstrap/Nav";
 import Widget from "../Widget/Widget";
 import logo from "../../logo.svg";
@@ -15,15 +14,16 @@ function NavBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <NavLink to="/category/zapatillas">zapatillas</NavLink>
-            <NavLink to="/category/remera">remera</NavLink>
-            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-            </NavDropdown>
+            <NavLink to="/category/zapatillas"   style={({ isActive }) => ({
+              color: isActive ? '#fff' : '#545e6f',
+              background: isActive ? '#7600dc' : '#f0f0f0',
+            })}
+          >Zapatillas</NavLink>
+            <NavLink to="/category/remera"   style={({ isActive }) => ({
+              color: isActive ? '#fff' : '#545e6f',
+              background: isActive ? '#7600dc' : '#f0f0f0',
+            })}
+          >Remera</NavLink>           
           </Nav>
           <Nav>           
             <Nav.Link href="/cart">

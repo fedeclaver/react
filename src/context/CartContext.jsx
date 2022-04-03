@@ -32,8 +32,24 @@ setCartList([...cartList,item])
   };
 
   const deleteOne = (id) => {
-    setCartList(cartList.filter((x) => x.id !== id));
+    setCartList(cartList.filter((prod)=> prod.id !== id))
   };
+
+const totalAmount = () => {
+    return  cartList.reduce((acc, prod) => acc += prod.price * prod.cantidad, 0)
+    
+}
+
+
+const cartQuantity = () => {
+
+  return cartList.reduce((acc, prod) => acc += prod.cantidad, 0)
+
+}
+
+
+
+
 
   return (
     <CartContext.Provider
@@ -43,6 +59,8 @@ setCartList([...cartList,item])
         isInCart,
         deleteCarrito,
         deleteOne,
+        totalAmount,
+        cartQuantity
       }}
     >
       {children}

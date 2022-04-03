@@ -12,11 +12,12 @@ const [ contador , setCont ] = useState(0);
 
 
 const onAdd = (contador) => {     
-  console.log(contador)   
 
-  addToCart( { ...product , cantidad: contador }  )
-    setCont(contador);
-    }
+  addToCart( { ...product, cantidad: contador }  )
+
+  setCont(contador);
+
+  }
    
     console.log(contador)
     console.log(cartList)
