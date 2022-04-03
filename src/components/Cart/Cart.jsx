@@ -7,7 +7,7 @@ function Cart() {
     <div>
       {cartList.map((product) => (
         <li key={product.id}>
-          nombre: {product.name} precio: {product.price}
+          nombre: {product.title} precio: {product.price}
           cantidad: {product.cantidad}
         </li>
       ))}

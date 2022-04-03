@@ -14,7 +14,7 @@ const [ contador , setCont ] = useState(0);
 const onAdd = (contador) => {     
   console.log(contador)   
 
-  addToCart( { item: product , cantidad: contador }  )
+  addToCart( { ...product , cantidad: contador }  )
     setCont(contador);
     }
    
@@ -31,7 +31,7 @@ const onAdd = (contador) => {
       : 
       <> 
       <Link to='/cart'><Button variant="success">Success</Button></Link> 
-      <Link to='/cart'><Button variant="secondary">seguir comprando</Button></Link>   
+      <Link to='/'><Button variant="secondary">seguir comprando</Button></Link>   
        </>}  
     </div>
   );

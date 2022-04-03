@@ -25,9 +25,8 @@ function NavBar() {
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link href="#memes">
+          <Nav>           
+            <Nav.Link href="/cart">
               <Widget />
             </Nav.Link>
           </Nav>
