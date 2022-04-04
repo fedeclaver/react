@@ -24,7 +24,7 @@ function CartContextProvider({ children }) {
     }
 
   };
-  const deleteCarrito = () => {
+  const emptyCart = () => {
     setCartList([]);
   };
   const isInCart = (id) => {
@@ -35,7 +35,7 @@ function CartContextProvider({ children }) {
     setCartList(cartList.filter((prod) => prod.id !== id))
   };
 
-  const count = () => {
+  const totalAmount = () => {
     return cartList.reduce((acc, prod) => acc += prod.price * prod.cantidad, 0)
 
   }
@@ -57,9 +57,9 @@ function CartContextProvider({ children }) {
         cartList,
         addToCart,
         isInCart,
-        deleteCarrito,
+        emptyCart,
         deleteItem,
-        count,
+        totalAmount,
         cartQuantity
       }}
     >

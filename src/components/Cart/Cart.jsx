@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { useCartContext } from "../../context/CartContext";
 import { FaTrash } from 'react-icons/fa';
 function Cart() {
-  const { cartList, deleteItem, emptyCart, totalAmount } = useCartContext();
+  const { cartList, deleteItem, emptyCart, cartQuantity,totalAmount } = useCartContext();
 
   return (
 
@@ -37,8 +37,8 @@ function Cart() {
                       {cartList.map((product) => (
                         <tr>
                     <th scope="row" class="border-0">
-                      <div key={product.id} class="p-2">
-                        <img src={product.pictureUrl} alt="" width="70" className="img-fluid rounded shadow-sm"/>
+                      <div key={product.id} class="p-2 ">
+                        <img src={product.pictureUrl} alt="" width="70" className="img-fluid rounded shadow-sm float-right"/>
                         <div className="ms-3 d-inline-block align-middle">
                           <h5 className="mb-0"> {product.title}</h5>
                         </div>
@@ -73,8 +73,8 @@ function Cart() {
                   <strong className="text-muted">Subtotal</strong>              
                 </li>
                 <li className="d-flex justify-content-between py-3 border-bottom">
-                  <strong className="text-muted">Total</strong>
-                  <h5 className="fw-bold">{totalAmount}</h5>
+                  <strong className="text-muted">Total{totalAmount}</strong>
+                  <h5 className="fw-bold">{cartQuantity}</h5>
                 </li>
               </ul>
               <Button href="#" className="btn btn-dark rounded-pill py-2 d-md-block">Finalizar Compra</Button>
