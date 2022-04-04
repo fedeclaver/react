@@ -79,11 +79,11 @@ function Cart() {
               
               <ul className="list-unstyled mb-4">
                 <li className="d-flex justify-content-between py-3 border-bottom">
-                  <strong className="text-muted">Subtotal</strong>              
+                  <strong className="text-muted">Pedido de {cartQuantity()} items</strong>              
                 </li>
                 <li className="d-flex justify-content-between py-3 border-bottom">
-                  <strong className="text-muted">Total${totalAmount()}</strong>
-                  <h5 className="fw-bold">{cartQuantity()}</h5>
+                  <strong className="text-muted">Total$</strong>
+                  <h5 className="fw-bold">{totalAmount()}</h5>
                 </li>
               </ul>
               <Button href="#" className="btn btn-dark rounded-pill py-2 d-md-block">Finalizar Compra</Button>
