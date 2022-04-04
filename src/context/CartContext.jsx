@@ -8,21 +8,21 @@ function CartContextProvider({ children }) {
   const [cartList, setCartList] = useState([]);
 
   const addToCart = (item) => {
-      const prodEnCarrito = cartList.find((prod) => prod.id ===item.id)
-      if(prodEnCarrito){       
-        const carritoActualizado = cartList.map((prod)=>{
-          if (prod.if === item.id) {
-            return {...prod,cantidad: item.cantidad + prod.cantidad}
-          }else{
-            return prod
-          }
+    const prodEnCarrito = cartList.find((prod) => prod.id === item.id)
+    if (prodEnCarrito) {
+      const carritoActualizado = cartList.map((prod) => {
+        if (prod.if === item.id) {
+          return { ...prod, cantidad: item.cantidad + prod.cantidad }
+        } else {
+          return prod
+        }
 
-        })
-      setCartList(carritoActualizado)           
-      }else{
-setCartList([...cartList,item])
-      }
-   
+      })
+      setCartList(carritoActualizado)
+    } else {
+      setCartList([...cartList, item])
+    }
+
   };
   const deleteCarrito = () => {
     setCartList([]);
@@ -31,21 +31,21 @@ setCartList([...cartList,item])
     return cartList.some((prod) => prod.id === id);
   };
 
-  const deleteOne = (id) => {
-    setCartList(cartList.filter((prod)=> prod.id !== id))
+  const deleteItem = (id) => {
+    setCartList(cartList.filter((prod) => prod.id !== id))
   };
 
-const totalAmount = () => {
-    return  cartList.reduce((acc, prod) => acc += prod.price * prod.cantidad, 0)
-    
-}
+  const count = () => {
+    return cartList.reduce((acc, prod) => acc += prod.price * prod.cantidad, 0)
+
+  }
 
 
-const cartQuantity = () => {
+  const cartQuantity = () => {
 
-  return cartList.reduce((acc, prod) => acc += prod.cantidad, 0)
+    return cartList.reduce((acc, prod) => acc += prod.cantidad, 0)
 
-}
+  }
 
 
 
@@ -58,8 +58,8 @@ const cartQuantity = () => {
         addToCart,
         isInCart,
         deleteCarrito,
-        deleteOne,
-        totalAmount,
+        deleteItem,
+        count,
         cartQuantity
       }}
     >
