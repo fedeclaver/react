@@ -5,9 +5,42 @@ import { FaTrash } from 'react-icons/fa';
 function Cart() {
   const { cartList, deleteItem, emptyCart, cartQuantity,totalAmount } = useCartContext();
 
+
+
+  const WidgetList = () => {
+    return (
+  <tbody>
+          
+  {cartList.map((product) => (
+    <tr>
+<th scope="row" class="border-0">
+  <div key={product.id} class="p-2 ">
+    <img src={product.pictureUrl} alt="" width="70" className="img-fluid rounded shadow-sm float-right"/>
+    <div className="ms-3 d-inline-block align-middle">
+      <h5 className="mb-0"> {product.title}</h5>
+    </div>
+  </div>
+</th>
+<td className="border-0 align-middle">
+  <strong>{product.price}</strong>
+</td>
+<td className="border-0 align-middle">
+  <strong>{product.cantidad}</strong>
+</td>
+<td className="border-0 align-middle">
+  <Button variant="outline-dark" onClick={()=> deleteItem(product.id)}><FaTrash color="red" />
+  </Button>
+</td>
+</tr>
+  ))}
+</tbody>
+    )
+  }
+
+
   return (
 
-    <div classname="cart">
+    <div className="cart">
     <section className="py-5">
       <div className="container px-4 px-lg-5 my-5">
         <div className="row">
@@ -32,31 +65,7 @@ function Cart() {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
-          
-                      {cartList.map((product) => (
-                        <tr>
-                    <th scope="row" class="border-0">
-                      <div key={product.id} class="p-2 ">
-                        <img src={product.pictureUrl} alt="" width="70" className="img-fluid rounded shadow-sm float-right"/>
-                        <div className="ms-3 d-inline-block align-middle">
-                          <h5 className="mb-0"> {product.title}</h5>
-                        </div>
-                      </div>
-                    </th>
-                    <td className="border-0 align-middle">
-                      <strong>{product.price}</strong>
-                    </td>
-                    <td className="border-0 align-middle">
-                      <strong>{product.cantidad}</strong>
-                    </td>
-                    <td className="border-0 align-middle">
-                      <Button variant="outline-dark" onClick={()=> deleteItem(product.id)}><FaTrash color="red" />
-                      </Button>
-                    </td>
-                  </tr>
-                      ))}
-                    </tbody>
+                {<WidgetList/>}
               </table>
             </div>
           </div>
@@ -73,8 +82,8 @@ function Cart() {
                   <strong className="text-muted">Subtotal</strong>              
                 </li>
                 <li className="d-flex justify-content-between py-3 border-bottom">
-                  <strong className="text-muted">Total{totalAmount}</strong>
-                  <h5 className="fw-bold">{cartQuantity}</h5>
+                  <strong className="text-muted">Total${totalAmount()}</strong>
+                  <h5 className="fw-bold">{cartQuantity()}</h5>
                 </li>
               </ul>
               <Button href="#" className="btn btn-dark rounded-pill py-2 d-md-block">Finalizar Compra</Button>
