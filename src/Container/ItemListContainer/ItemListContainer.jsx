@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { getFetch } from "../../helpers/mock";
 import Container from "react-bootstrap/Container";
 import { useParams } from "react-router-dom";
-function ItemListContainer({ greeting }) {
+function ItemListContainer() {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
   useEffect(() => {
@@ -16,7 +16,7 @@ function ItemListContainer({ greeting }) {
   }, [id]);
   return (
     <div>
-      {greeting} ,
+ 
       <Container fluid>
         <ItemList products={products} />
       </Container>

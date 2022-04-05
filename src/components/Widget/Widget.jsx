@@ -11,7 +11,7 @@ function Widget(){
     const Count = () => {
         return (
           <div className='flex flex-row'>
-                 <Badge color="secondary" badgeContent={count}></Badge>
+                 <Badge color="secondary" badgecontent={count}></Badge>
     
             </div>
         )
