@@ -1,20 +1,42 @@
 import { useState, useEffect } from "react";
-import { getFetch } from "../../helpers/mock";
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
+//import { Loading } from "../../components/Loading/Loading";
 import { useParams } from "react-router-dom";
 
 function ItemDetailContainer() {
   const { id } = useParams();
+ // const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState([]);
   useEffect(() => {
     // obtengo datos del mock
-    getFetch.then((response) => setProduct(response.find((resp) => resp.id === id))).catch((error) => console.log(error));
+   
+    async function getById() {
+
+      try {
+        const db = getFirestore();
+        const item = doc(db, 'items' , id);
+        const response = await getDoc(item)
+        
+        setProduct( { id: response.id, ...response.data()} );
+      //  setLoading(false);
+      } catch (error) {
+        /* Manejo de Errores */
+      }
+      
+    }
+
+    getById();    
   }, [id]);
 
   return (
-    <div>
-      <ItemDetail product={product} />
-    </div>
+  
+    
+   
+      <ItemDetail product={product}   />
+    
+      
+      
   );
 }
 

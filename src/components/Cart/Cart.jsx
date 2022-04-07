@@ -1,5 +1,5 @@
 
-import { Button, Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useCartContext } from "../../context/CartContext";
 import { FaTrash } from 'react-icons/fa';
 function Cart() {
@@ -9,7 +9,7 @@ const WidgetList = () => {
   return (
     <>
     {cartList.map((product) => (
-  <tr key={product.id}>
+  <tr key={product}>
 <th scope="row" className="border-0">
 <div  className="p-2 ">
   <img src={product.pictureUrl} alt="" width="70" className="img-fluid rounded shadow-sm float-right"/>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Count from "../ItemCount/ItemCount";
 import { useState } from "react";
 
-function ItemDetail({ product }) {
+function ItemDetail({ product , loading, setLoading}) {
 const { cartList , addToCart  } =useCartContext();
 const [ contador , setCont ] = useState(0);
 
@@ -16,7 +16,7 @@ const onAdd = (contador) => {
   addToCart( { ...product, cantidad: contador }  )
 
   setCont(contador);
-
+  setLoading(false)
   }
    
     console.log(contador)

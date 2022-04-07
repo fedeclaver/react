@@ -1,26 +1,46 @@
 import ItemList from "../../components/ItemList/ItemList";
 import { useState, useEffect } from "react";
-import { getFetch } from "../../helpers/mock";
+import { Loading } from '../../components/Loading/Loading';
 import Container from "react-bootstrap/Container";
 import { useParams } from "react-router-dom";
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 function ItemListContainer() {
   const [products, setProducts] = useState([]);
-  const { id } = useParams();
+  //const [loading, setLoading] = useState(true);
+  const { category } = useParams();
   useEffect(() => {
-    if (id === undefined) {
-      // obtengo datos del mock
-      getFetch.then((response) => setProducts(response)).catch((error) => console.log(error));
-    } else {
-      getFetch.then((response) => setProducts(response.filter((resp) => resp.category === id))).catch((error) => console.log(error));
+    async function getAll() {
+      
+      try {
+        const db = getFirestore();
+        const queryCollection =  collection(db, 'items')
+        const filterQuery = category ? query(queryCollection, where('category', '==', category)) : queryCollection
+        const response = await getDocs(filterQuery)
+     
+        setProducts(response.docs.map( prod => ({ id: prod.id, ...prod.data() }) ));
+       // setLoading(false);
+      } catch (error) {
+        
+      }
+            
     }
-  }, [id]);
+
+    getAll();
+
+
+
+
+
+  }, [category]);
   return (
     <div>
+
  
       <Container fluid>
-        <ItemList products={products} />
+        <ItemList products={products}/>
       </Container>
-    </div>
+         </div>
+    
   );
 }
 
