@@ -1,6 +1,6 @@
-import ItemList from "../../components/ItemList/ItemList";
+import ItemList from "../../Components/ItemList/ItemList";
 import { useState, useEffect } from "react";
-import { Loading } from '../../components/Loading/Loading';
+import { Loading } from '../../Components/Loading/Loading';
 import Container from "react-bootstrap/Container";
 import { useParams } from "react-router-dom";
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";

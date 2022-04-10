@@ -2,7 +2,7 @@ import React from "react";
 import { Badge } from "react-bootstrap";
 
 import cart from '../../cart.svg';
-import { useCartContext } from "../../context/CartContext";
+import { useCartContext } from "../../Context/CartContext";
 
 function Widget(){
     const { count,cartList } = useCartContext();

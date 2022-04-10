@@ -1,12 +1,12 @@
 import { Button } from "react-bootstrap";
-import { useCartContext } from "../../context/CartContext";
+import { useCartContext } from "../../Context/CartContext";
 
 import { Link } from "react-router-dom";
 
 import Count from "../ItemCount/ItemCount";
 import { useState } from "react";
 
-function ItemDetail({ product , loading, setLoading}) {
+function ItemDetail({ product }) {
 const { cartList , addToCart  } =useCartContext();
 const [ contador , setCont ] = useState(0);
 
@@ -16,7 +16,7 @@ const onAdd = (contador) => {
   addToCart( { ...product, cantidad: contador }  )
 
   setCont(contador);
-  setLoading(false)
+
   }
    
     console.log(contador)

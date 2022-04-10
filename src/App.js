@@ -1,11 +1,11 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NavBar from "./components/Navbar/Navbar";
-import Cart from "./components/Cart/Cart";
+import NavBar from "./Components/Navbar/Navbar";
+import Cart from "./Components/Cart/Cart";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ItemListContainer from "./Container/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./Container/ItemDetailContainer/ItemDetailContainer";
-import CartContextProvider from "./context/CartContext";
+import CartContextProvider from "./Context/CartContext";
 
 function App() {
   return (
