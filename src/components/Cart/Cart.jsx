@@ -7,7 +7,7 @@ import { addDoc, collection, documentId, getDocs, getFirestore, query, Timestamp
 function Cart() {
   const { cartList, deleteItem, emptyCart, cartQuantity, totalAmount } = useCartContext();
   const [dataForm , setDataForm ] = useState({email: '',name: '',phone: ''});
-  const [idOrder, setIdOrden] = useState('');
+  const [id, setId] = useState(null)
 
 
 
@@ -21,19 +21,20 @@ function Cart() {
     order.items = cartList.map(cartItem => {
       const id = cartItem.id;
       const nombre = cartItem.title;
-      const precio = cartItem.precio * cartItem.cantidad;
+      const price = cartItem.price * cartItem.cantidad;
       const cantidad = cartItem.cantidad      
-      return {id, nombre, precio, cantidad}  
+      return {id, nombre, price, cantidad}  
+     
   }) 
-        
+  console.log(order + '/'+id);
     // guardar la orden en firestore
     const db = getFirestore()
 
-    const oredenCollection = collection(db, 'ordenes')
+    const oredenCollection = collection(db, 'orders')
     await addDoc(oredenCollection, order) // setDoc
-    .then(resp => setIdOrden(resp.id))
+    .then(({id}) => setId(id))
     .catch(err => console.log(err))        
-
+    .finally(() => emptyCart())
     // actualizar stock
     const queryCollection = collection(db, 'items')
 
@@ -132,14 +133,14 @@ console.log(dataForm)
           <div className="col-lg-6">
           <div className="bg-light rounded-pill px-4 py-3 text-uppercase fw-bold">Ingresar Datos</div>
           <div className="p-4">
-                  <form onSubmit={setOrder}>                    
+                  <form>                    
                   <input type='text' class="form-control border-0" name='name' placeholder='name' onChange={handleChange} value={dataForm.name}/> 
                   <br/>
                   <input type='text' class="form-control border-0" name='phone' placeholder='tel' onChange={handleChange} value={dataForm.phone}/>        
                   <br/>
                   <input type='email'class="form-control border-0"  name='email' placeholder='email' onChange={handleChange} value={dataForm.email}/>
                   <br/>
-                  <Button href="#" className="btn btn-dark rounded-pill py-2 d-md-block" >Finalizar Compra</Button>
+                  <Button  onClick={setOrder} className="btn btn-dark rounded-pill py-2 d-md-block" >Finalizar Compra</Button>
                 </form>        
         </div>
           </div>
