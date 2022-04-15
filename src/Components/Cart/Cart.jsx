@@ -139,14 +139,14 @@ function handleChange(e) {
           {!id && <div className="col-lg-6">
           <div className="bg-light rounded-pill px-4 py-3 text-uppercase fw-bold">Ingresar Datos</div>
           <div className="p-4">
-                  <form>                    
+                  <form onSubmit={setOrder}>                    
                   <input type='text' className="form-control border-0" name='name' placeholder='name' onChange={handleChange} value={dataForm.name} required />
                   <br/>
                   <input type='text' className="form-control border-0" name='phone' placeholder='tel' onChange={handleChange} value={dataForm.phone} required />      
                   <br/>
                   <input type='email'className="form-control border-0"  name='email' placeholder='email' onChange={handleChange} value={dataForm.email} required />
                   <br/>
-                  <Button   type="submit" onClick={setOrder} className="btn btn-dark rounded-pill py-2 d-md-block" >Finalizar Compra</Button>
+                  <button   type="submit"  className="btn btn-dark rounded-pill py-2 d-md-block" >Finalizar Compra</button>
                 </form>        
         </div>
           </div>
