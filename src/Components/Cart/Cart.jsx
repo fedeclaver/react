@@ -140,13 +140,13 @@ function handleChange(e) {
           <div className="bg-light rounded-pill px-4 py-3 text-uppercase fw-bold">Ingresar Datos</div>
           <div className="p-4">
                   <form>                    
-                  <input type='text' className="form-control border-0" name='name' placeholder='name' onChange={handleChange} value={dataForm.name}/> 
+                  <input type='text' className="form-control border-0" name='name' placeholder='name' onChange={handleChange} value={dataForm.name} required />
                   <br/>
-                  <input type='text' className="form-control border-0" name='phone' placeholder='tel' onChange={handleChange} value={dataForm.phone}/>        
+                  <input type='text' className="form-control border-0" name='phone' placeholder='tel' onChange={handleChange} value={dataForm.phone} required />      
                   <br/>
-                  <input type='email'className="form-control border-0"  name='email' placeholder='email' onChange={handleChange} value={dataForm.email}/>
+                  <input type='email'className="form-control border-0"  name='email' placeholder='email' onChange={handleChange} value={dataForm.email} required />
                   <br/>
-                  <Button  href="#" onClick={setOrder} className="btn btn-dark rounded-pill py-2 d-md-block" >Finalizar Compra</Button>
+                  <Button   type="submit" onClick={setOrder} className="btn btn-dark rounded-pill py-2 d-md-block" >Finalizar Compra</Button>
                 </form>        
         </div>
           </div>
