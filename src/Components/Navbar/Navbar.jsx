@@ -26,9 +26,9 @@ function NavBar() {
           >Remera</NavLink>           
           </Nav>
           <Nav>           
-            <Nav.Link href="/cart">
+            <NavLink  activeStyle={{ color: 'white' }} to="/cart">
               <Widget />
-            </Nav.Link>
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>

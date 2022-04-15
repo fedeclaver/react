@@ -4,6 +4,7 @@ import { useCartContext } from "../../Context/CartContext";
 import { FaTrash } from 'react-icons/fa';
 import { useState } from "react";
 import { addDoc, collection, documentId, getDocs, getFirestore, query, Timestamp, where, writeBatch } from "firebase/firestore";
+import { Link } from "react-router-dom";
 function Cart() {
   const { cartList, deleteItem, emptyCart, cartQuantity, totalAmount } = useCartContext();
   const [dataForm , setDataForm ] = useState({email: '',name: '',phone: ''});
@@ -63,57 +64,62 @@ function handleChange(e) {
         [e.target.name]: e.target.value
     })
 }
-console.log(dataForm)
-  const WidgetList = () => {
-    return (
-      <>   <div className="table-responsive">
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col" className="border-0 bg-light">
-              <div className="p-2 px-3 text-uppercase">Product</div>
-            </th>
-            <th scope="col" className="border-0 bg-light">
-              <div className="py-2 text-uppercase">Price</div>
-            </th>
-            <th scope="col" className="border-0 bg-light">
-              <div className="py-2 text-uppercase">Quantity</div>
-            </th>
-            <th scope="col" className="border-0 bg-light">
-              <div className="py-2 text-uppercase">Remove</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-        {cartList.map((product) => (
-          <tr key={product} >
-            <th scope="row">
-              <div className="d-flex p-2">
-                <img src={product.pictureUrl} alt="" width="70" className="img-fluid rounded shadow-sm"/>
-                <div className="m-3 d-inline-block align-middle">
-                  <h5 className="mb-0 text-dark d-inline-block align-middle">{product.title}</h5>
-                </div>
-              </div>
-            </th>
-            <td className="border-0 align-middle">
-              <strong>{product.price}</strong>
-            </td>
-            <td className="border-0 align-middle">
-              <strong>{product.cantidad}</strong>
-            </td>
-            <td className="border-0 align-middle">
-              <Button variant="outline-dark" onClick={() => deleteItem(product.id)}><FaTrash color="red" />
-              </Button>
-            </td>
-          </tr>
-        )
-        )} </tbody></table>
+
+
+  return (
+    <>
+  <div className="pb-5">
+<div className="container">
+<div className="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+<> {!cartList.length ?  <div><h2>Tu carrito esta vacio!</h2>
+  <Button  className="btn btn-dark rounded-pill"><Link to={"/"}>Ir a productos</Link></Button></div> 
+:<div className="table-responsive">
+<table className="table">
+  <thead>
+    <tr>
+      <th scope="col" className="border-0 bg-light">
+        <div className="p-2 px-3 text-uppercase">Product</div>
+      </th>
+      <th scope="col" className="border-0 bg-light">
+        <div className="py-2 text-uppercase">Price</div>
+      </th>
+      <th scope="col" className="border-0 bg-light">
+        <div className="py-2 text-uppercase">Quantity</div>
+      </th>
+      <th scope="col" className="border-0 bg-light">
+        <div className="py-2 text-uppercase">Remove</div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  {cartList.map((product) => (
+    <tr key={product} >
+      <th scope="row">
+        <div className="d-flex p-2">
+          <img src={product.pictureUrl} alt="" width="70" className="img-fluid rounded shadow-sm"/>
+          <div className="m-3 d-inline-block align-middle">
+            <h5 className="mb-0 text-dark d-inline-block align-middle">{product.title}</h5>
+          </div>
         </div>
-      </>
-    )
-  }
-  const WidgetTotal = () => {
-    return (
+      </th>
+      <td className="border-0 align-middle">
+        <strong>{product.price}</strong>
+      </td>
+      <td className="border-0 align-middle">
+        <strong>{product.cantidad}</strong>
+      </td>
+      <td className="border-0 align-middle">
+        <Button variant="outline-dark" onClick={() => deleteItem(product.id)}><FaTrash color="red" />
+        </Button>
+      </td>
+    </tr>
+  )
+  )} </tbody></table>
+
+  </div>
+
+}</>
+      <Button href="#" onClick={() => emptyCart()} className="btn btn-dark rounded-pill py-2 d-md-block m-2">Vaciar Carrito</Button>
       <>    
         <div className="row py-5 p-4 bg-white rounded shadow-sm">      
           <div className="col-lg-6">
@@ -134,28 +140,18 @@ console.log(dataForm)
           <div className="bg-light rounded-pill px-4 py-3 text-uppercase fw-bold">Ingresar Datos</div>
           <div className="p-4">
                   <form>                    
-                  <input type='text' class="form-control border-0" name='name' placeholder='name' onChange={handleChange} value={dataForm.name}/> 
+                  <input type='text' className="form-control border-0" name='name' placeholder='name' onChange={handleChange} value={dataForm.name}/> 
                   <br/>
-                  <input type='text' class="form-control border-0" name='phone' placeholder='tel' onChange={handleChange} value={dataForm.phone}/>        
+                  <input type='text' className="form-control border-0" name='phone' placeholder='tel' onChange={handleChange} value={dataForm.phone}/>        
                   <br/>
-                  <input type='email'class="form-control border-0"  name='email' placeholder='email' onChange={handleChange} value={dataForm.email}/>
+                  <input type='email'className="form-control border-0"  name='email' placeholder='email' onChange={handleChange} value={dataForm.email}/>
                   <br/>
-                  <Button  onClick={setOrder} className="btn btn-dark rounded-pill py-2 d-md-block" >Finalizar Compra</Button>
+                  <Button  href="#" onClick={setOrder} className="btn btn-dark rounded-pill py-2 d-md-block" >Finalizar Compra</Button>
                 </form>        
         </div>
           </div>
         </div>
       </>
-    )
-  }
-  return (
-    <>
-  <div className="pb-5">
-<div className="container">
-<div className="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
-      <WidgetList />
-      <Button href="#" onClick={() => emptyCart()} className="btn btn-dark rounded-pill py-2 d-md-block m-2">Vaciar Carrito</Button>
-      <WidgetTotal />
       </div>
       </div>      
       </div>
