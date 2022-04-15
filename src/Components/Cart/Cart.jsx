@@ -136,7 +136,7 @@ function handleChange(e) {
               </ul>            
             </div>
           </div>
-          <div className="col-lg-6">
+          {!id && <div className="col-lg-6">
           <div className="bg-light rounded-pill px-4 py-3 text-uppercase fw-bold">Ingresar Datos</div>
           <div className="p-4">
                   <form>                    
@@ -150,6 +150,13 @@ function handleChange(e) {
                 </form>        
         </div>
           </div>
+          }
+
+          {id && <div>
+
+            <h2>Felicitaciones! Su orden : {id} esta siendo procesada! </h2>
+
+            </div>}
         </div>
       </>
       </div>
