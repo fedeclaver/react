@@ -11,7 +11,7 @@ function CartContextProvider({ children }) {
     const prodEnCarrito = cartList.find((prod) => prod.id === item.id)
     if (prodEnCarrito) {
       const carritoActualizado = cartList.map((prod) => {
-        if (prod.if === item.id) {
+        if (prod.id === item.id) {
           return { ...prod, cantidad: item.cantidad + prod.cantidad }
         } else {
           return prod

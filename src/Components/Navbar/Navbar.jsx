@@ -26,7 +26,7 @@ function NavBar() {
             </ul>   
           </Nav>
           <Nav>           
-            <NavLink  activeStyle={{ color: 'white' }} to="/cart">
+            <NavLink to="/cart">
               <Widget />
             </NavLink>
           </Nav>

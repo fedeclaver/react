@@ -7,7 +7,7 @@ import Count from "../ItemCount/ItemCount";
 import { useState } from "react";
 
 function ItemDetail({ product }) {
-const { cartList , addToCart  } =useCartContext();
+const { addToCart } = useCartContext();
 const [ contador , setCont ] = useState(0);
 
 
@@ -18,9 +18,6 @@ const onAdd = (contador) => {
   setCont(contador);
 
   }
-   
-    console.log(contador)
-    console.log(cartList)
   return (
     <div>
       <img src={product.pictureUrl} alt="imagen" />
@@ -28,7 +25,7 @@ const onAdd = (contador) => {
       <p>{product.price}</p>
       <p>{product.description}</p>
    {contador === 0 ? 
-      <Count initial={0} stock={10} onAdd={onAdd}/> 
+      <Count initial={0} stock={product.stock} onAdd={onAdd}/>
       : 
       <> 
       <Link to='/cart'><Button variant="success">Success</Button></Link> 
