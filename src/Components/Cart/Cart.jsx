@@ -27,7 +27,6 @@ function Cart() {
       return {id, nombre, price, cantidad}  
      
   }) 
-  console.log(order + '/'+id);
     // guardar la orden en firestore
     const db = getFirestore()
 
@@ -53,7 +52,6 @@ function Cart() {
         }) 
     ))
     .catch(err => console.log(err))
-    .finally(()=> console.log('stock actualizado'))
     batch.commit()
   
 }
@@ -93,7 +91,7 @@ function handleChange(e) {
   </thead>
   <tbody>
   {cartList.map((product) => (
-    <tr key={product} >
+    <tr key={product.id} >
       <th scope="row">
         <div className="d-flex p-2">
           <img src={product.pictureUrl} alt="" width="70" className="img-fluid rounded shadow-sm"/>
